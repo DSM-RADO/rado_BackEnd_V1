@@ -2,6 +2,8 @@ package com.example.rado.domain.board.service;
 
 import com.example.rado.domain.board.controller.dto.request.BoardAddRequest;
 import com.example.rado.domain.board.controller.dto.request.BoardRequest;
+import com.example.rado.domain.board.controller.dto.response.BoardListResponse;
+import com.example.rado.domain.board.controller.dto.response.BoardResponse;
 import com.example.rado.domain.board.entity.Board;
 import com.example.rado.domain.board.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
@@ -41,5 +43,15 @@ public class BoardService {
                 .orElseThrow();
 
         board.update(request.getContent());
+    }
+
+    public BoardListResponse boardList() {
+        return BoardListResponse.builder()
+                .boardList(
+                        boardRepository.findAll()
+                                .stream()
+                                .map(BoardResponse::of)
+                                .toList())
+                .build();
     }
 }
