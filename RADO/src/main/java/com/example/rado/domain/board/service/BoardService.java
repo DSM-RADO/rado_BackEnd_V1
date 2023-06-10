@@ -32,4 +32,14 @@ public class BoardService {
         boardRepository.deleteById(id);
     }
 
+    @Transactional
+    public void boardModify(
+            BoardRequest request,
+            Long id
+    ) {
+        Board board = boardRepository.findById(id)
+                .orElseThrow();
+
+        board.update(request.getContent());
+    }
 }

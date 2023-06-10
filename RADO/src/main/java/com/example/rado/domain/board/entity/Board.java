@@ -1,6 +1,5 @@
 package com.example.rado.domain.board.entity;
 
-import com.example.rado.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,7 +12,6 @@ public class Board {
     private Long id;
 
     private String content;
-
 
     @Builder
     public Board(String content){

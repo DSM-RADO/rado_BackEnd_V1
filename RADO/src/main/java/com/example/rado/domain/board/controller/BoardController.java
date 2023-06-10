@@ -26,5 +26,12 @@ public class BoardController {
     ) {
         boardService.boardRemove(boardId);
     }
-    
+
+    @PutMapping("/modify/{boardId}")
+    public void modifyBoard(
+            @RequestBody BoardRequest request,
+            @PathVariable Long boardId
+            ) {
+        boardService.boardModify(request, boardId);
+    }
 }
