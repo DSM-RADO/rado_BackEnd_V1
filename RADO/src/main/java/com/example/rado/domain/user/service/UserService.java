@@ -29,8 +29,8 @@ public class UserService {
             userRepository.save(
                     User.builder()
                             .userId(request.getUserId())
-                            .userPassword(request.getUserPassword())
-                            .userName(request.getUserName())
+                            .password(request.getPassword())
+                            .name(request.getName())
                             .build());
         }
         else
@@ -45,7 +45,7 @@ public class UserService {
         User user = userRepository.findById(id)
                         .orElseThrow();
 
-        user.update(request.getUserId(), request.getUserPassword(), request.getUserName());
+        user.update(request.getUserId(), request.getPassword(), request.getName());
     }
 
     @Transactional

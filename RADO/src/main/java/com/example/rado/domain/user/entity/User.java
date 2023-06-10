@@ -1,9 +1,6 @@
 package com.example.rado.domain.user.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -15,22 +12,25 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "user_id", nullable = false)
     private String userId;
 
-    private String userPassword;
+    @Column(name = "password", nullable = false, length = 1000)
+    private String password;
 
-    private String userName;
+    @Column(name = "name", nullable = false, length = 4)
+    private String name;
 
     @Builder
-    public User(String userId, String userPassword, String userName){
+    public User(String userId, String password, String name){
         this.userId = userId;
-        this.userPassword = userPassword;
-        this.userName = userName;
+        this.password = password;
+        this.name = name;
     }
 
-    public void update(String userId, String userPassword, String userName){
+    public void update(String userId, String password, String name){
         this.userId = userId;
-        this.userPassword = userPassword;
-        this.userName = userName;
+        this.password = password;
+        this.name = name;
     }
 }

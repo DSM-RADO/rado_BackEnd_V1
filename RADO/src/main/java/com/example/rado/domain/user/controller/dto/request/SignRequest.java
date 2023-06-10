@@ -9,7 +9,7 @@ public class SignRequest {
 
     private String userId;
 
-    private String userPassword;
+    private String password;
 
-    private String userName;
+    private String name;
 }
