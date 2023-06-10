@@ -1,5 +1,6 @@
 package com.example.rado.domain.user.service;
 
+import com.example.rado.domain.user.controller.dto.request.SignRequest;
 import com.example.rado.domain.user.controller.dto.request.SignupRequest;
 import com.example.rado.domain.user.entity.User;
 import com.example.rado.domain.user.repository.UserRepository;
@@ -34,5 +35,16 @@ public class UserService {
         }
         else
             throw new AlreadyExistIdException();
+    }
+
+    @Transactional
+    public void modifyUser(
+            SignRequest request,
+            Long id
+    ) {
+        User user = userRepository.findById(id)
+                        .orElseThrow();
+
+        user.update(request.getUserId(), request.getUserPassword(), request.getUserName());
     }
 }

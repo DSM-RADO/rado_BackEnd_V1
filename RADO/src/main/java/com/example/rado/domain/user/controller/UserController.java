@@ -1,5 +1,6 @@
 package com.example.rado.domain.user.controller;
 
+import com.example.rado.domain.user.controller.dto.request.SignRequest;
 import com.example.rado.domain.user.controller.dto.request.SignupRequest;
 import com.example.rado.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -11,10 +12,19 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final UserService userService;
+
     @PostMapping(" ")
     public void userAdd(
             @RequestBody SignupRequest request
             ) {
         userService.userAdd(request);
+    }
+
+    @PutMapping("/modify/{userId}")
+    public void userModify(
+            @RequestBody SignRequest request,
+            @PathVariable Long userId
+            ) {
+        userService.modifyUser(request, userId);
     }
 }
