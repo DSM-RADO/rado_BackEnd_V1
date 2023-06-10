@@ -20,4 +20,11 @@ public class BoardController {
         boardService.boardAdd(request);
     }
 
+    @DeleteMapping("/remove/{boardId}")
+    public void removeBoard(
+            @PathVariable Long boardId
+    ) {
+        boardService.boardRemove(boardId);
+    }
+    
 }

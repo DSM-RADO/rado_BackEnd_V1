@@ -25,4 +25,11 @@ public class BoardService {
                         .build());
     }
 
+    @Transactional
+    public void boardRemove(
+            Long id
+    ) {
+        boardRepository.deleteById(id);
+    }
+
 }
