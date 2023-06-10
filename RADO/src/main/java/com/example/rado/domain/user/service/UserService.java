@@ -47,4 +47,11 @@ public class UserService {
 
         user.update(request.getUserId(), request.getUserPassword(), request.getUserName());
     }
+
+    @Transactional
+    public void removeUser(
+            Long id
+    ) {
+        userRepository.deleteById(id);
+    }
 }
