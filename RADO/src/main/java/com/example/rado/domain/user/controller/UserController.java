@@ -29,10 +29,4 @@ public class UserController {
         userService.modifyUser(request, userId);
     }
 
-    @DeleteMapping("/remove/{userId}")
-    public void userRemove(
-            @PathVariable Long userId
-    ) {
-        userService.removeUser(userId);
-    }
 }
