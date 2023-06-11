@@ -1,7 +1,10 @@
 package com.example.rado.domain.board.entity;
 
+import com.example.rado.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.net.UnknownServiceException;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -11,6 +14,7 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "content")
     private String content;
 
     @Builder
