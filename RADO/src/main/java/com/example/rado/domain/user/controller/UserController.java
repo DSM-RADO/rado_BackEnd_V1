@@ -3,9 +3,10 @@ package com.example.rado.domain.user.controller;
 import com.example.rado.domain.user.controller.dto.request.SignRequest;
 import com.example.rado.domain.user.controller.dto.request.SignupRequest;
 import com.example.rado.domain.user.service.UserService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor

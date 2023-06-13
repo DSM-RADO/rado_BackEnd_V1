@@ -19,6 +19,9 @@ public class Board {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @OneToMany(mappedBy = "board", cascade = CascadeType.REMOVE)
+    private List<BoardComment> boardCommentList = new ArrayList<>();
+
     @Column(name = "content", length = 100)
     private String content;
 

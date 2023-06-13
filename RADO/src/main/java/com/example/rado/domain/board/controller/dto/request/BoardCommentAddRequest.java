@@ -10,4 +10,6 @@ public class BoardCommentAddRequest {
     private String comment;
 
     private String content;
+
+    private String userId;
 }

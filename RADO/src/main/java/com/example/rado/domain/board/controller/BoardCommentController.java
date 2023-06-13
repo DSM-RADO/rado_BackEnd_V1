@@ -1,10 +1,12 @@
 package com.example.rado.domain.board.controller;
 
 import com.example.rado.domain.board.controller.dto.request.BoardCommentAddRequest;
+import com.example.rado.domain.board.controller.dto.request.BoardCommentRequest;
 import com.example.rado.domain.board.service.BoardCommentService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
@@ -25,5 +27,13 @@ public class BoardCommentController {
             @PathVariable Long commentId
     ) {
         boardCommentService.commentRemove(commentId);
+    }
+
+    @PutMapping("/modify/{commentId}")
+    public void modifyComment(
+            @RequestBody BoardCommentRequest request,
+            @PathVariable Long commentId
+            ) {
+        boardCommentService.commentModify(request, commentId);
     }
 }
