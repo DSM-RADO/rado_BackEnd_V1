@@ -1,7 +1,6 @@
 package com.example.rado.domain.board.controller;
 
 import com.example.rado.domain.board.controller.dto.request.BoardCommentAddRequest;
-import com.example.rado.domain.board.controller.dto.request.BoardCommentRequest;
 import com.example.rado.domain.board.service.BoardCommentService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
