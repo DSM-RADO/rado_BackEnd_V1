@@ -11,6 +11,7 @@ import com.example.rado.domain.board.repository.BoardRepository;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Service
 @RequiredArgsConstructor
@@ -31,5 +32,11 @@ public class BoardCommentService {
                         .board(board)
                         .comment(request.getComment())
                         .build());
+    }
+
+    public void commentRemove(
+            Long id
+    ) {
+        boardCommentRepository.deleteById(id);
     }
 }
