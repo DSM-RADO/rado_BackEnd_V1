@@ -6,6 +6,8 @@ import com.example.rado.domain.board.controller.dto.response.BoardListResponse;
 import com.example.rado.domain.board.controller.dto.response.BoardResponse;
 import com.example.rado.domain.board.entity.Board;
 import com.example.rado.domain.board.repository.BoardRepository;
+import com.example.rado.domain.user.entity.User;
+import com.example.rado.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,12 +19,18 @@ public class BoardService {
 
     private final BoardRepository boardRepository;
 
+    private final UserRepository userRepository;
+
     @Transactional
     public void boardAdd(
             BoardAddRequest request
     ) {
+        User user = userRepository.findByUserId(request.getUserId())
+                        .orElseThrow(() -> new IllegalArgumentException("해당 계정이 없습니다"));
+
         boardRepository.save(
                 Board.builder()
+                        .user(user)
                         .content(request.getContent())
                         .build());
     }

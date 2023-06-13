@@ -4,6 +4,7 @@ import com.example.rado.domain.board.controller.dto.request.BoardAddRequest;
 import com.example.rado.domain.board.controller.dto.request.BoardRequest;
 import com.example.rado.domain.board.controller.dto.response.BoardListResponse;
 import com.example.rado.domain.board.service.BoardService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,9 +15,9 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    @PostMapping("")
+    @PostMapping
     public void addBoard(
-            @RequestBody BoardAddRequest request
+            @RequestBody @Valid BoardAddRequest request
     ) {
         boardService.boardAdd(request);
     }
@@ -40,4 +41,5 @@ public class BoardController {
     public BoardListResponse listBoard(){
         return boardService.boardList();
     }
+
 }

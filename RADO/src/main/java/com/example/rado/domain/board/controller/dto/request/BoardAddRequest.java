@@ -6,5 +6,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class BoardAddRequest {
+
+    private String userId;
+
     private String content;
 }

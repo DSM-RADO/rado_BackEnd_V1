@@ -4,8 +4,6 @@ import com.example.rado.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.net.UnknownServiceException;
-
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -15,14 +13,15 @@ public class Board {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @Column(name = "content")
     private String content;
 
     @Builder
-    public Board(String content){
+    public Board(String content, User user){
+        this.user = user;
         this.content = content;
     }
 
