@@ -4,9 +4,10 @@ import com.example.rado.domain.board.controller.dto.request.BoardAddRequest;
 import com.example.rado.domain.board.controller.dto.request.BoardRequest;
 import com.example.rado.domain.board.controller.dto.response.BoardListResponse;
 import com.example.rado.domain.board.service.BoardService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
@@ -31,7 +32,7 @@ public class BoardController {
 
     @PutMapping("/modify/{boardId}")
     public void modifyBoard(
-            @RequestBody BoardRequest request,
+            @RequestBody @Valid BoardRequest request,
             @PathVariable Long boardId
             ) {
         boardService.boardModify(request, boardId);

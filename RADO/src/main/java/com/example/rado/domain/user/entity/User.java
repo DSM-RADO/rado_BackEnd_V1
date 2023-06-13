@@ -1,9 +1,10 @@
 package com.example.rado.domain.user.entity;
 
 import com.example.rado.domain.board.entity.Board;
-import jakarta.persistence.*;
+import com.example.rado.domain.board.entity.BoardComment;
 import lombok.*;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +17,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
-    private List<Board> boardList = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "comment_id")
+    private BoardComment boardComment;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<Board> boardList = new  ArrayList<>();
 
     @Column(name = "user_id", nullable = false)
     private String userId;
