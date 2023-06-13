@@ -31,7 +31,7 @@ public class BoardCommentService {
                         .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다"));
 
         User user = userRepository.findByUserId(request.getUserId())
-                        .orElseThrow(() -> new  IllegalArgumentException("해당 아이디가 없습니다"));
+                        .orElseThrow(() -> new  IllegalArgumentException("해당 계정이 없습니다"));
 
         boardCommentRepository.save(
                 BoardComment.builder()
