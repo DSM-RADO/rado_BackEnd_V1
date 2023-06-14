@@ -18,6 +18,10 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    private final UserFacade userFacade;
+
+
+
     @Transactional
     public void userAdd(
         SignupRequest request
