@@ -1,8 +1,10 @@
 package com.example.rado.domain.user.service;
 
 import com.example.rado.domain.user.controller.dto.request.UserAddRequest;
+import com.example.rado.domain.user.controller.dto.request.UserLoginRequest;
 import com.example.rado.domain.user.entity.User;
 import com.example.rado.domain.user.repository.UserRepository;
+import com.example.rado.global.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +16,8 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
+
+    private  JwtTokenProvider jwtTokenProvider;
 
     @Transactional
     public void addUser(UserAddRequest request){
@@ -35,5 +39,14 @@ public class UserService {
         }
     }
 
-    public void modifyUser()
+    public String loginUser(UserLoginRequest request){
+        if ("UserId".equals(request.getUserId()) && "UserPassword".equals(request.getUserPassword())){
+            String token = jwtTokenProvider.generateToken(request.getUserId());
+            return token;
+        }
+        else {
+            throw new IllegalArgumentException("로그인 실패");
+        }
+    }
+
 }
