@@ -2,12 +2,11 @@ package com.example.rado.domain.user.controller;
 
 import com.example.rado.domain.user.controller.dto.request.UserAddRequest;
 import com.example.rado.domain.user.controller.dto.request.UserLoginRequest;
+import com.example.rado.domain.user.controller.dto.request.UserRequest;
+import com.example.rado.domain.user.controller.dto.response.TokenResponse;
 import com.example.rado.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -24,9 +23,10 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public void userLogin(@RequestBody UserLoginRequest request){
-        userService.loginUser(request);
+    public TokenResponse userLogin(@RequestBody UserLoginRequest request){
+        return userService.userLogin(request);
     }
+
 }
 
 

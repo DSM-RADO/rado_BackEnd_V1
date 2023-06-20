@@ -1,7 +1,8 @@
-package com.example.rado.global.security;
+package com.example.rado.global.security.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -19,11 +20,15 @@ public class SpringBootWebSecurityConfiguration {
                 .cors().and()
                 .csrf().disable()
                 .exceptionHandling()
-
                 .and()
                 .headers()
                 .frameOptions()
                 .sameOrigin()
+
+                .and()
+                .authorizeRequests()
+                .antMatchers(HttpMethod.POST, "/user").permitAll()
+                .antMatchers(HttpMethod.POST, "/user/login").permitAll()
 
                 .and()
                 .sessionManagement()

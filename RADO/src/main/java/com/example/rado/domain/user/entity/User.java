@@ -34,6 +34,14 @@ public class User {
     @Column(name = "day", length = 31)
     private Integer day;
 
+    public void modify(String userId, String userName, String userPassword, Integer month, Integer day){
+        this.userId = userId;
+        this.userPassword = userPassword;
+        this.userName = userName;
+        this.month = month;
+        this.day = day;
+    }
+
     @Builder
     public User(String userId, String userName, String userPassword, final Integer year, Integer month, Integer day){
         this.userId = userId;
