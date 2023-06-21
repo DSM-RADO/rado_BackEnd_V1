@@ -27,6 +27,10 @@ public class UserController {
         return userService.userLogin(request);
     }
 
+    @DeleteMapping("/delete")
+    public void userDelete(){
+        userService.deleteUser();
+    }
 }
 
 

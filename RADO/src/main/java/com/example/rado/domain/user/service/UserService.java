@@ -48,10 +48,13 @@ public class UserService {
 
     public TokenResponse userLogin(UserLoginRequest request){
 
-        User user = userRepository.findByUserId(request.getUserId())
+        String userId = request.getUserId();
+        String userPassword = request.getUserPassword();
+
+        User user = userRepository.findByUserId(userId)
                 .orElseThrow();
 
-        if (request.getUserId().equals(user.getUserId()) && request.getUserPassword().equals(user.getUserPassword())){
+        if (userId.equals(user.getUserId()) && userPassword.equals(user.getUserPassword())){
            return TokenResponse
                    .builder()
                    .accessToken(jwtTokenProvider.createAccessToken(user.getUserName()))
@@ -61,7 +64,15 @@ public class UserService {
 
         }
         else {
-            throw new IllegalArgumentException("로그인 실패");
+            throw new IllegalArgumentException("비밀번호 또는 아이디가 일치하지 않습니다");
         }
+    }
+
+    @Transactional
+    public void deleteUser() {
+
+        User user = userFacade.currentUser();
+
+        userRepository.deleteById(user.getId());
     }
 }
