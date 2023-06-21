@@ -34,10 +34,10 @@ public class JwtTokenProvider implements InitializingBean {
         this.key = Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public String createAccessToken(String username) {
+    public String createAccessToken(String userId) {
         Date now = new Date();
         return Jwts.builder()
-                .setSubject(username)
+                .setSubject(userId)
                 .claim("type", "access")
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + jwtProperties.getAccessExpiration() * 1000))
@@ -45,7 +45,6 @@ public class JwtTokenProvider implements InitializingBean {
                 .compact();
     }
 
-    // 토큰에 담겨있는 username으로 SpringSecurity Authentication 정보를 반환하는 메서드
     public Authentication getAuthentication(String token) {
         Claims claims = getClaims(token);
         UserDetails userDetails = customUserDetailsService.loadUserByUsername(claims.getSubject());

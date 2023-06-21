@@ -2,7 +2,6 @@ package com.example.rado.domain.user.service;
 
 import com.example.rado.domain.user.controller.dto.request.UserAddRequest;
 import com.example.rado.domain.user.controller.dto.request.UserLoginRequest;
-import com.example.rado.domain.user.controller.dto.request.UserRequest;
 import com.example.rado.domain.user.controller.dto.response.TokenResponse;
 import com.example.rado.domain.user.entity.User;
 import com.example.rado.domain.user.repository.UserRepository;
@@ -10,6 +9,8 @@ import com.example.rado.domain.user.service.Faeade.UserFacade;
 import com.example.rado.global.security.jwt.JwtProperties;
 import com.example.rado.global.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,16 +49,14 @@ public class UserService {
 
     public TokenResponse userLogin(UserLoginRequest request){
 
-        String userId = request.getUserId();
-        String userPassword = request.getUserPassword();
 
-        User user = userRepository.findByUserId(userId)
+        User user = userRepository.findByUserId(request.getUserId())
                 .orElseThrow();
 
-        if (userId.equals(user.getUserId()) && userPassword.equals(user.getUserPassword())){
+        if (request.getUserId().equals(user.getUserId()) && request.getUserPassword().equals(user.getUserPassword())){
            return TokenResponse
                    .builder()
-                   .accessToken(jwtTokenProvider.createAccessToken(user.getUserName()))
+                   .accessToken(jwtTokenProvider.createAccessToken(user.getUserId()))
                    .expiredAt(java.time.LocalDateTime.now()
                            .plusSeconds(jwtProperties.getAccessExpiration()))
                    .build();
@@ -69,10 +68,13 @@ public class UserService {
     }
 
     @Transactional
-    public void deleteUser() {
-
+    public void userRemove() {
         User user = userFacade.currentUser();
-
-        userRepository.deleteById(user.getId());
+        if (user != null) {
+            userRepository.deleteById(user.getId());
+        } else {
+            throw new IllegalStateException("현재 사용자를 찾을 수 없습니다.");
+        }
     }
+
 }

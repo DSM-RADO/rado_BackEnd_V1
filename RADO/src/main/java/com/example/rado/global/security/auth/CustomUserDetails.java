@@ -12,11 +12,11 @@ import java.util.Collections;
 @AllArgsConstructor
 public class CustomUserDetails implements UserDetails {
 
-    private final String userName;
+    private final String userId;
 
     @Override
     public String getUsername() {
-        return userName;
+        return userId;
     }
 
     public Collection<? extends GrantedAuthority> getAuthorities() {

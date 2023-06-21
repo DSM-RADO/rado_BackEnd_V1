@@ -29,6 +29,8 @@ public class SpringBootWebSecurityConfiguration {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/user").permitAll()
                 .antMatchers(HttpMethod.POST, "/user/login").permitAll()
+                .antMatchers(HttpMethod.DELETE, "/user/remove").permitAll()
+
 
                 .and()
                 .sessionManagement()

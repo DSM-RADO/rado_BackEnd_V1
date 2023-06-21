@@ -2,8 +2,8 @@ package com.example.rado.domain.user.controller;
 
 import com.example.rado.domain.user.controller.dto.request.UserAddRequest;
 import com.example.rado.domain.user.controller.dto.request.UserLoginRequest;
-import com.example.rado.domain.user.controller.dto.request.UserRequest;
 import com.example.rado.domain.user.controller.dto.response.TokenResponse;
+import com.example.rado.domain.user.service.Faeade.UserFacade;
 import com.example.rado.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -27,9 +27,9 @@ public class UserController {
         return userService.userLogin(request);
     }
 
-    @DeleteMapping("/delete")
-    public void userDelete(){
-        userService.deleteUser();
+    @DeleteMapping("/remove")
+    public void userRemove(){
+        userService.userRemove();
     }
 }
 
