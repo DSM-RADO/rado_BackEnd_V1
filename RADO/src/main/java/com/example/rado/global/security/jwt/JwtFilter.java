@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @RequiredArgsConstructor
-public class  JwtFilter extends OncePerRequestFilter {
+public class JwtFilter extends OncePerRequestFilter {
 
     private final JwtTokenProvider jwtTokenProvider;
 
@@ -21,10 +21,13 @@ public class  JwtFilter extends OncePerRequestFilter {
 
         String token = jwtTokenProvider.resolveToken(request);
 
+        System.out.println(token + "asdfkjasdkfl;");
+
         if (token != null) {
             // Jwt에 담긴 정보를 통해 어떤 유저가 로그인 되었는지 식별하고,
             // Spring Security SecurityContextHolder를 통해 현재 요청에 유저의 정보를 등록한다.
-            Authentication authentication = jwtTokenProvider.getAuthentication(token);
+            System.out.println("as;dklfja;sldfjasklfasj;ldlkj");
+            Authentication authentication = jwtTokenProvider.authentication(token);
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
         filterChain.doFilter(request, response);

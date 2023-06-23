@@ -9,8 +9,6 @@ import com.example.rado.domain.user.service.Faeade.UserFacade;
 import com.example.rado.global.security.jwt.JwtProperties;
 import com.example.rado.global.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,32 +47,28 @@ public class UserService {
 
     public TokenResponse userLogin(UserLoginRequest request){
 
-
         User user = userRepository.findByUserId(request.getUserId())
                 .orElseThrow();
 
-        if (request.getUserId().equals(user.getUserId()) && request.getUserPassword().equals(user.getUserPassword())){
-           return TokenResponse
-                   .builder()
-                   .accessToken(jwtTokenProvider.createAccessToken(user.getUserId()))
-                   .expiredAt(java.time.LocalDateTime.now()
-                           .plusSeconds(jwtProperties.getAccessExpiration()))
-                   .build();
-
+        if (request.getUserId().equals(user.getUserId()) && (request.getUserPassword().equals(user.getUserPassword()))){
+            return TokenResponse
+                    .builder()
+                    .accessToken(jwtTokenProvider.generateAccessToken(user.getUserId()))
+                    .expiredAt(java.time.LocalDateTime.now()
+                            .plusSeconds(jwtProperties.getAccessExpiration()))
+                    .build();
         }
         else {
-            throw new IllegalArgumentException("비밀번호 또는 아이디가 일치하지 않습니다");
+            throw new IllegalArgumentException("로그인 실패");
         }
     }
 
     @Transactional
-    public void userRemove() {
+    public void userRemove(){
         User user = userFacade.currentUser();
-        if (user != null) {
-            userRepository.deleteById(user.getId());
-        } else {
-            throw new IllegalStateException("현재 사용자를 찾을 수 없습니다.");
-        }
+        userRepository.delete(user);
     }
 
 }
+
+

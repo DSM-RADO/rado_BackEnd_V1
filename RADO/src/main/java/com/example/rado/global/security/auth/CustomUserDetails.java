@@ -1,7 +1,8 @@
 package com.example.rado.global.security.auth;
 
-import lombok.AllArgsConstructor;
+import com.example.rado.domain.user.entity.User;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -9,14 +10,14 @@ import java.util.Collection;
 import java.util.Collections;
 
 @Getter
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CustomUserDetails implements UserDetails {
 
-    private final String userId;
+    private final User user;
 
     @Override
     public String getUsername() {
-        return userId;
+        return user.getUserId();
     }
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -48,4 +49,3 @@ public class CustomUserDetails implements UserDetails {
         return true;
     }
 }
-

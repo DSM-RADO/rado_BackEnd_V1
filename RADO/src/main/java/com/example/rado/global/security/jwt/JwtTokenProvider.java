@@ -1,80 +1,75 @@
 package com.example.rado.global.security.jwt;
 
+
 import com.example.rado.global.security.auth.CustomUserDetailsService;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.io.Decoders;
-import io.jsonwebtoken.security.Keys;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
-
-import javax.servlet.http.HttpServletRequest;
-import java.security.Key;
-import java.util.Date;
+import io.jsonwebtoken.*;
+import io.jsonwebtoken.io.*;
+import io.jsonwebtoken.security.*;
+import java.security.*;
+import java.util.*;
+import javax.servlet.http.*;
+import lombok.*;
+import org.springframework.beans.factory.*;
+import org.springframework.security.authentication.*;
+import org.springframework.security.core.*;
+import org.springframework.security.core.userdetails.*;
+import org.springframework.stereotype.*;
+import org.springframework.util.*;
 
 
-@Component
 @RequiredArgsConstructor
-public class JwtTokenProvider implements InitializingBean {
+@Component
+public class JwtTokenProvider {
 
     private final JwtProperties jwtProperties;
     private final CustomUserDetailsService customUserDetailsService;
-    private Key key;
 
-    @Override
-    public void afterPropertiesSet() {
-        byte[] keyBytes = Decoders.BASE64.decode(jwtProperties.getSecret());
-        this.key = Keys.hmacShaKeyFor(keyBytes);
+    public String generateAccessToken(String userId) {
+        return generateToken(userId, "access", jwtProperties.getAccessExpiration());
     }
 
-    public String createAccessToken(String userId) {
-        Date now = new Date();
+
+
+    private String generateToken(String userId, String type, Long exp) {
         return Jwts.builder()
+                .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecret())
                 .setSubject(userId)
-                .claim("type", "access")
-                .setIssuedAt(now)
-                .setExpiration(new Date(now.getTime() + jwtProperties.getAccessExpiration() * 1000))
-                .signWith(key, SignatureAlgorithm.HS256)
+                .claim("type", type)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + exp * 1000))
                 .compact();
     }
 
-    public Authentication getAuthentication(String token) {
-        Claims claims = getClaims(token);
-        UserDetails userDetails = customUserDetailsService.loadUserByUsername(claims.getSubject());
+    public String resolveToken(HttpServletRequest request) {
+        String bearer = request.getHeader(jwtProperties.getHeader());
+        return parseToken(bearer);
+    }
+
+    public Authentication authentication(String token) {
+        UserDetails userDetails = customUserDetailsService
+                .loadUserByUsername(getTokenSubject(token));
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 
-    private Claims getClaims(String token) {
+    public String parseToken(String bearerToken) {
+        if (bearerToken != null && bearerToken.startsWith(jwtProperties.getPrefix()))
+            return bearerToken.replace(jwtProperties.getPrefix(), "");
+        return null;
+    }
+
+    private Claims getTokenBody(String token) {
+
         try {
-            return Jwts
-                    .parser()
-                    .setSigningKey(key)
-                    .parseClaimsJws(token)
-                    .getBody();
-        } catch (ExpiredJwtException e) {
+            return Jwts.parser().setSigningKey(jwtProperties.getSecret())
+                    .parseClaimsJws(token).getBody();
+        } catch (io.jsonwebtoken.ExpiredJwtException e) {
             throw new IllegalArgumentException("error");
         } catch (Exception e) {
             throw new IllegalArgumentException("error1");
         }
     }
 
-    // HTTP 요청 헤더에서 토큰을 가져오는 메서드
-    public String resolveToken(HttpServletRequest request) {
-
-        String bearerToken = request.getHeader(jwtProperties.getHeader());
-
-        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(jwtProperties.getPrefix())
-                && bearerToken.length() > jwtProperties.getPrefix().length() + 1) {
-            return bearerToken.substring(7);
-        }
-        return null;
+    private String getTokenSubject(String token) {
+        return getTokenBody(token).getSubject();
     }
-
 }
