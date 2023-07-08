@@ -1,4 +1,4 @@
-package com.example.onepiece.User.global.security.error;
+package com.example.rado.global.security.error;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
