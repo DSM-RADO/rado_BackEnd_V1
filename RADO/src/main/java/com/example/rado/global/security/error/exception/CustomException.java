@@ -1,6 +1,6 @@
-package com.example.onepiece.User.global.security.error.exception;
+package com.example.rado.global.security.error.exception;
 
-import com.example.onepiece.User.global.security.error.ErrorCode;
+import com.example.rado.global.security.error.ErrorCode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
