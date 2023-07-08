@@ -14,9 +14,19 @@ public class UserFacade {
 
     public User currentUser(){
         String userId = SecurityContextHolder.getContext().getAuthentication().getName();
-        System.out.println("userId = " + userId);
         return userRepository.findByUserId(userId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 아이디 입니다"));
+    }
 
+    public boolean  existsByUserId(String userId) {
+        if (userRepository.existsByUserId(userId)) {
+            throw new IllegalArgumentException("중복된 아이디 입니다");
+        }
+        else return true;
+    }
+
+    public User getUserByUserId(String userId){
+       return userRepository.findUserByUserId(userId)
+               .orElseThrow(() -> new IllegalArgumentException("사용자가 존재하지 않습니다"));
     }
 }
