@@ -1,4 +1,4 @@
-package com.example.onepiece.User.global.security.config;
+package com.example.rado.global.security.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
