@@ -1,10 +1,10 @@
 package com.example.rado.domain.user.controller;
 
 import com.example.rado.domain.user.controller.dto.request.UserAddRequest;
+import com.example.rado.domain.user.controller.dto.request.UserDuplicate;
 import com.example.rado.domain.user.controller.dto.request.UserLoginRequest;
-import com.example.rado.domain.user.controller.dto.response.TokenResponse;
-import com.example.rado.domain.user.service.Faeade.UserFacade;
 import com.example.rado.domain.user.service.UserService;
+import com.example.rado.global.security.jwt.dto.TokenResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,15 +22,15 @@ public class UserController {
         userService.addUser(request);
     }
 
-    @PostMapping("/login")
-    public TokenResponse userLogin(@RequestBody UserLoginRequest request){
-        return userService.userLogin(request);
-    }
+   @GetMapping("/idDuplicate")
+    public void userDuplicate(@RequestBody UserDuplicate userDuplicate){
+        userService.duplicateUser(userDuplicate);
+   }
 
-    @DeleteMapping("/remove")
-    public void userRemove(){
-        userService.userRemove();
-    }
+   @PostMapping("/login")
+   public TokenResponse userLogin(@RequestBody UserLoginRequest request){
+        return userService.login(request);
+   }
 }
 
 
