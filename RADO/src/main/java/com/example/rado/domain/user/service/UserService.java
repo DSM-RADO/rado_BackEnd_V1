@@ -28,7 +28,7 @@ public class UserService {
         userRepository.save(
                 User.builder()
                         .userId(request.getUserId())
-                        .userPassword(request.getUserPassword())
+                        .userPassword(passwordEncoder.encode(request.getUserPassword()))
                         .userName(request.getUserName())
                         .year(request.getYear())
                         .month(request.getMonth())
