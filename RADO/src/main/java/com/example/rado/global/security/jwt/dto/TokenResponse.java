@@ -1,14 +1,13 @@
-package com.example.rado.domain.user.controller.dto.response;
+package com.example.onepiece.User.global.security.jwt.dto;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
 
-@Builder
 @Getter
+@AllArgsConstructor
 public class TokenResponse {
-
 
     private String accessToken;
 

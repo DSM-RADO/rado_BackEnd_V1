@@ -1,4 +1,4 @@
-package com.example.rado.global.security.jwt;
+package com.example.onepiece.User.global.security.jwt.repository;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,10 +10,8 @@ import org.springframework.boot.context.properties.ConstructorBinding;
 @ConstructorBinding
 @ConfigurationProperties(prefix = "jwt")
 public class JwtProperties {
-    private String header;
-    private String prefix;
-    private String secret;
-    private Long accessExpiration;
-    private Long refreshExpiration;
-
+    private final String header;
+    private final String prefix;
+    private final String secret;
+    private final Long accessExpiration;
 }

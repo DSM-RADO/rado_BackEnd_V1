@@ -1,32 +1,32 @@
-package com.example.rado.global.security.auth;
+package com.example.onepiece.User.global.security.auth;
 
-import com.example.rado.domain.user.entity.User;
+import com.example.onepiece.User.domain.entity.User;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.Collections;
 
 @Getter
 @RequiredArgsConstructor
-public class CustomUserDetails implements UserDetails {
+public class AuthDetails implements UserDetails {
 
     private final User user;
 
     @Override
-    public String getUsername() {
-        return user.getUserId();
-    }
-
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.emptyList();
+        return null;
     }
 
     @Override
     public String getPassword() {
         return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return user.getUserId();
     }
 
     @Override
