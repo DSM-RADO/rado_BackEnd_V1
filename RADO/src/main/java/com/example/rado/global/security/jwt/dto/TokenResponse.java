@@ -8,6 +8,5 @@ import lombok.Getter;
 public class TokenResponse {
 
     private final String atk;
-    private final String rtk;
     private final Long expiredAt;
 }

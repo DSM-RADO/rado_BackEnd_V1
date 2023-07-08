@@ -1,4 +1,4 @@
-package com.example.backend.domain.board.service;
+package com.example.rado.domain.board.service;
 
 import com.example.backend.domain.board.domain.Board;
 import com.example.backend.domain.board.domain.repository.BoardRepository;

@@ -1,4 +1,4 @@
-package com.example.backend.domain.user.presentation.dto.response;
+package com.example.rado.domain.user.presentation.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;

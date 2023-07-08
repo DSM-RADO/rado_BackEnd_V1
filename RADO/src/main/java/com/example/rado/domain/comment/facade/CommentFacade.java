@@ -1,6 +1,5 @@
-package com.example.backend.domain.comment.facade;
+package com.example.rado.domain.comment.facade;
 
-import com.example.backend.domain.board.domain.Board;
 import com.example.backend.domain.comment.domain.Comment;
 import com.example.backend.domain.comment.domain.repository.CommentRepository;
 import com.example.backend.global.error.ErrorCode;

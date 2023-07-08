@@ -1,4 +1,4 @@
-package com.example.backend.domain.board.domain;
+package com.example.rado.domain.board.domain;
 
 import com.example.backend.global.entity.BaseEntity;
 import lombok.AccessLevel;

@@ -1,7 +1,7 @@
 package com.example.rado.global.error.handler;
 
-import com.example.backend.global.error.entity.ErrorResponseEntity;
-import com.example.backend.global.error.exeception.CustomException;
+import com.example.rado.global.error.entity.ErrorResponseEntity;
+import com.example.rado.global.error.exeception.CustomException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -1,4 +1,4 @@
-package com.example.backend.domain.board.presentation.dto.request;
+package com.example.rado.domain.board.presentation.dto.request;
 
 import com.example.backend.domain.board.enums.Category;
 import lombok.Getter;

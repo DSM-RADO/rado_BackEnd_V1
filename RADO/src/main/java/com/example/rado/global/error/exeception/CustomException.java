@@ -1,6 +1,6 @@
 package com.example.rado.global.error.exeception;
 
-import com.example.backend.global.error.ErrorCode;
+import com.example.rado.global.error.ErrorCode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

@@ -1,4 +1,4 @@
-package com.example.backend.domain.board.domain.repository;
+package com.example.rado.domain.board.domain.repository;
 
 import com.example.backend.domain.board.domain.Board;
 import org.springframework.data.jpa.repository.JpaRepository;

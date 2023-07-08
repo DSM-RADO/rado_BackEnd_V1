@@ -1,11 +1,10 @@
 package com.example.rado.global.security.jwt.repository;
 
-import com.example.backend.domain.user.domain.User;
-import com.example.backend.global.error.ErrorCode;
-import com.example.backend.global.error.exeception.CustomException;
-import com.example.backend.global.security.jwt.dto.TokenResponse;
-import com.example.backend.global.security.jwt.entity.RefreshToken;
-import com.example.backend.global.security.principle.AuthDetailsService;
+import com.example.rado.domain.user.domain.User;
+import com.example.rado.global.error.ErrorCode;
+import com.example.rado.global.error.exeception.CustomException;
+import com.example.rado.global.security.jwt.dto.TokenResponse;
+import com.example.rado.global.security.principle.AuthDetailsService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -45,25 +44,15 @@ public class JwtProvider {
 
     public TokenResponse getToken(User user) {
         String atk = generateAccessToken(user.getEmail());
-        String rtk = generateRefreshToken(user.getEmail());
 
-        return new TokenResponse(atk, rtk, atkTime);
+        return new TokenResponse(atk,atkTime);
     }
     public String generateAccessToken(String email) {
         return generateToken(email, "access", atkTime);
     }
 
-    public String generateRefreshToken(String email) {
-        String refreshToken = generateToken(email, "refresh", rtkTime);
 
-        refreshTokenRepository.save(new RefreshToken(
-                email,
-                refreshToken,
-                rtkTime
-        ));
 
-        return refreshToken;
-    }
 
     private String generateToken(String email, String type, Long exp) {
         return Jwts.builder()

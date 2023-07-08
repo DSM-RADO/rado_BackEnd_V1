@@ -1,10 +1,9 @@
 package com.example.rado.global.security.principle;
 
-import com.example.backend.domain.user.domain.User;
+import com.example.rado.domain.user.domain.User;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
@@ -17,11 +16,10 @@ public class AuthDetails implements UserDetails {
 
     private final User user;
 
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> roles = new ArrayList<>();
-        roles.add(new SimpleGrantedAuthority(user.getRole().name()));
-        return roles;
+        return null;
     }
 
     @Override

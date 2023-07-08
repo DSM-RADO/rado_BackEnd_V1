@@ -1,12 +1,12 @@
-package com.example.backend.domain.user.service;
+package com.example.rado.domain.user.service;
 
-import com.example.backend.domain.user.domain.User;
-import com.example.backend.domain.user.facade.UserFacade;
-import com.example.backend.domain.user.presentation.dto.request.LoginRequest;
-import com.example.backend.global.error.ErrorCode;
-import com.example.backend.global.error.exeception.CustomException;
-import com.example.backend.global.security.jwt.dto.TokenResponse;
-import com.example.backend.global.security.jwt.repository.JwtProvider;
+import com.example.rado.domain.user.domain.User;
+import com.example.rado.domain.user.facade.UserFacade;
+import com.example.rado.domain.user.presentation.dto.request.LoginRequest;
+import com.example.rado.global.error.ErrorCode;
+import com.example.rado.global.error.exeception.CustomException;
+import com.example.rado.global.security.jwt.dto.TokenResponse;
+import com.example.rado.global.security.jwt.repository.JwtProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

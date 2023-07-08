@@ -1,4 +1,4 @@
-package com.example.backend.domain.user.presentation.dto.request;
+package com.example.rado.domain.user.presentation.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

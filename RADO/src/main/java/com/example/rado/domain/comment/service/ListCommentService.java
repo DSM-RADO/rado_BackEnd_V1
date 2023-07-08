@@ -1,6 +1,5 @@
-package com.example.backend.domain.comment.service;
+package com.example.rado.domain.comment.service;
 
-import com.example.backend.domain.board.domain.Board;
 import com.example.backend.domain.board.facade.BoardFacade;
 import com.example.backend.domain.comment.domain.Comment;
 import com.example.backend.domain.comment.facade.CommentFacade;

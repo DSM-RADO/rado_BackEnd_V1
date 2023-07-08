@@ -1,15 +1,13 @@
-package com.example.backend.domain.user.presentation;
+package com.example.rado.domain.user.presentation;
 
-import com.example.backend.domain.user.presentation.dto.request.CodeRequest;
-import com.example.backend.domain.user.presentation.dto.request.LoginRequest;
-import com.example.backend.domain.user.presentation.dto.request.SignUpRequest;
-import com.example.backend.domain.user.service.CodeService;
-import com.example.backend.domain.user.service.DeleteUserService;
-import com.example.backend.domain.user.service.LoginUserService;
-import com.example.backend.domain.user.service.SignupUserService;
-import com.example.backend.global.security.jwt.dto.TokenResponse;
-import com.example.backend.infrastructure.mail.dto.MailRequest;
-import com.example.backend.infrastructure.mail.service.MailService;
+import com.example.rado.domain.user.presentation.dto.request.Duplicate;
+import com.example.rado.domain.user.presentation.dto.request.LoginRequest;
+import com.example.rado.domain.user.presentation.dto.request.SignUpRequest;
+import com.example.rado.domain.user.service.DeleteUserService;
+import com.example.rado.domain.user.service.DuplicateService;
+import com.example.rado.domain.user.service.LoginUserService;
+import com.example.rado.domain.user.service.SignupUserService;
+import com.example.rado.global.security.jwt.dto.TokenResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -23,24 +21,10 @@ import javax.validation.Valid;
 @RequestMapping("/user")
 @RestController
 public class UserController {
-    private final MailService mailService;
-    private final CodeService codeService;
     private final SignupUserService signupUserService;
     private final LoginUserService loginUserService;
     private final DeleteUserService deleteUserService;
-
-    @Operation(summary = "회원가입 코드 전송")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PostMapping("/code")
-    public void Code(@Valid @RequestBody MailRequest request) throws Exception {
-        mailService.execute(request);
-    }
-
-    @Operation(summary = "회원가입 코드 인증")
-    @PostMapping("/check")
-    public boolean Code(@Valid @RequestBody CodeRequest request) {
-        return codeService.execute(request);
-    }
+    private final DuplicateService duplicateService;
 
     @Operation(summary = "회원가입")
     @ResponseStatus(HttpStatus.CREATED)
@@ -60,5 +44,11 @@ public class UserController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void leaveUser() {
         deleteUserService.execute();
+    }
+
+    @Operation(summary = "아이디 중복확인")
+    @GetMapping("/duplicate")
+    public boolean duplicate(Duplicate duplicate){
+        return duplicateService.idDuplicate(duplicate);
     }
 }

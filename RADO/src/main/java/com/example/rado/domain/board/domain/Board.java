@@ -1,9 +1,8 @@
-package com.example.backend.domain.board.domain;
+package com.example.rado.domain.board.domain;
 
-import com.example.backend.domain.board.enums.Category;
-import com.example.backend.domain.comment.domain.Comment;
-import com.example.backend.domain.user.domain.User;
-import com.example.backend.global.entity.BaseEntity;
+import com.example.rado.domain.comment.domain.Comment;
+import com.example.rado.domain.user.domain.User;
+import com.example.rado.global.entity.BaseEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,9 +21,6 @@ public class Board extends BaseEntity {
 
     private String content;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Category category;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

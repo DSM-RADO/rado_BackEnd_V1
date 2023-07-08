@@ -1,4 +1,4 @@
-package com.example.backend.domain.user.presentation.dto.request;
+package com.example.rado.domain.user.presentation.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +10,6 @@ import javax.validation.constraints.Pattern;
 @AllArgsConstructor
 public class SignUpRequest {
 
-    private String email;
 
     @Length(min = 2, max = 15)
     private String accountId;
@@ -19,5 +18,7 @@ public class SignUpRequest {
             message = "비밀번호는 8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.")
     private String password;
 
-    private String passwordValid;
+    private Integer year;
+    private Integer month;
+    private Integer day;
 }

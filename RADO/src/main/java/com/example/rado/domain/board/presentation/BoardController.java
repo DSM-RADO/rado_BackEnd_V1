@@ -1,4 +1,4 @@
-package com.example.backend.domain.board.presentation;
+package com.example.rado.domain.board.presentation;
 
 import com.example.backend.domain.board.enums.Category;
 import com.example.backend.domain.board.presentation.dto.request.CreateBoardRequest;

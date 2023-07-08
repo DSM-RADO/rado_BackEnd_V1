@@ -1,4 +1,4 @@
-package com.example.backend.domain.comment.presentation;
+package com.example.rado.domain.comment.presentation;
 
 import com.example.backend.domain.comment.presentation.dto.request.CommentAddRequest;
 import com.example.backend.domain.comment.presentation.dto.request.CommentRequest;

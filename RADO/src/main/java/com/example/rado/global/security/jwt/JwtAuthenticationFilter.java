@@ -1,6 +1,6 @@
 package com.example.rado.global.security.jwt;
 
-import com.example.backend.global.security.jwt.repository.JwtProvider;
+import com.example.rado.global.security.jwt.repository.JwtProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

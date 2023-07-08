@@ -1,11 +1,11 @@
 package com.example.rado.global.error.entity;
 
-import com.example.backend.global.error.ErrorCode;
+import com.example.rado.global.error.ErrorCode;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import org.springframework.http.ResponseEntity;
 
-@Data
+@Getter
 @Builder
 public class ErrorResponseEntity {
     private int status;

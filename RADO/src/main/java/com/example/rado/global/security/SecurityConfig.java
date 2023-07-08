@@ -1,7 +1,7 @@
 package com.example.rado.global.security;
 
-import com.example.backend.global.security.jwt.JwtAuthenticationFilter;
-import com.example.backend.global.security.jwt.repository.JwtProvider;
+import com.example.rado.global.security.jwt.JwtAuthenticationFilter;
+import com.example.rado.global.security.jwt.repository.JwtProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,9 +13,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
 
-import java.util.List;
 
 @EnableWebSecurity
 @Configuration
@@ -26,13 +24,6 @@ public class SecurityConfig {
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        http.cors().configurationSource(request -> {
-            var cors = new CorsConfiguration();
-            cors.setAllowedOrigins(List.of("http://localhost:3000"));
-            cors.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
-            cors.setAllowedHeaders(List.of("*"));
-            return cors;
-        });
 
         http
 

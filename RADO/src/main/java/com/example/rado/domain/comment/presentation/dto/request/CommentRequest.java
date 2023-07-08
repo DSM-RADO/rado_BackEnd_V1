@@ -1,4 +1,4 @@
-package com.example.backend.domain.comment.presentation.dto.request;
+package com.example.rado.domain.comment.presentation.dto.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
