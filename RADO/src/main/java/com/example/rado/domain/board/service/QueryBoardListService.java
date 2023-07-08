@@ -1,8 +1,8 @@
 package com.example.rado.domain.board.service;
 
-import com.example.backend.domain.board.domain.Board;
-import com.example.backend.domain.board.facade.BoardFacade;
-import com.example.backend.domain.board.presentation.dto.response.QueryBoardListResponse;
+import com.example.rado.domain.board.domain.Board;
+import com.example.rado.domain.board.facade.BoardFacade;
+import com.example.rado.domain.board.presentation.dto.response.QueryBoardListResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,6 @@ public class QueryBoardListService {
         return boards.stream()
                 .map(board -> QueryBoardListResponse.builder()
                         .boardId(board.getId())
-                        .title(board.getTitle())
                         .content(board.getContent())
                         .date(board.getCreatedAt())
                         .writer(board.getUser().getNickName())

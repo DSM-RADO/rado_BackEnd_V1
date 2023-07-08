@@ -1,12 +1,12 @@
 package com.example.rado.domain.comment.service;
 
-import com.example.backend.domain.board.domain.Board;
-import com.example.backend.domain.board.facade.BoardFacade;
-import com.example.backend.domain.comment.domain.Comment;
-import com.example.backend.domain.comment.domain.repository.CommentRepository;
-import com.example.backend.domain.comment.presentation.dto.request.CommentAddRequest;
-import com.example.backend.domain.user.domain.User;
-import com.example.backend.domain.user.facade.UserFacade;
+import com.example.rado.domain.board.domain.Board;
+import com.example.rado.domain.board.facade.BoardFacade;
+import com.example.rado.domain.comment.domain.Comment;
+import com.example.rado.domain.comment.domain.repository.CommentRepository;
+import com.example.rado.domain.comment.presentation.dto.request.CommentAddRequest;
+import com.example.rado.domain.user.domain.User;
+import com.example.rado.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

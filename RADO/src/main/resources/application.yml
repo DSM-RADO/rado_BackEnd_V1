@@ -5,23 +5,26 @@ spring:
     username: root
     password: rlaehrud9919@
 
-  jpa:
-    open-in-view: true
-    hibernate:
-      ddl-auto: update
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-      use-new-id-generator-mappings: false
-    properties:
-      dialect: org.hibernate.dialect.MySQL8InnoDBDialect
+    jwt:
+      key: asdkhfqwioehraskjldbfklasbdfiuasdufweyhrjkahskldfhasduhfkljasdbhnfkjbaslkdfbuabsdufhiouhyweuiorhkljasdhflkusadhfkjbasdlkfbuashfkasbdlkfjh
+      live:
+        atk: 3600000
+        rtk: 604800000
 
-logging:
-  level:
-    org.hibernate.SQL: debug
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true
 
-jwt:
-  header: Authorization
-  prefix: Bearer
-  secret: "asjdlfasjidfaaasdklfjasldfjaksldfjalksdfjaklsdfjklsdkflasdklfaksjdlfjsdklfjaslkdfasfdasdf"
-  accessExpiration: 36000
-  refreshExpiration: 36000
+  cloud:
+    aws:
+      credentials:
+        accessKey: AKIAWUTT3RNCWRQ5ZASA
+        secretKey: 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
+      s3:
+        bucket: td-project-bucket
+        dir: image
+      region:
+        static: ap-northeast-2
+      stack:
+        auto: false

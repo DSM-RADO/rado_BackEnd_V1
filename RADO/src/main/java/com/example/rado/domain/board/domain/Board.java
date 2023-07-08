@@ -17,31 +17,22 @@ import java.util.List;
 @Table(name = "tbl_board")
 public class Board extends BaseEntity {
 
-    private String title;
-
     private String content;
-
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @OneToMany(mappedBy = "board", cascade = CascadeType.REMOVE)
-    private List<BoardImage> boardImages;
-
-    @OneToMany(mappedBy = "board", cascade = CascadeType.REMOVE)
     private List<Comment> comments;
 
     @Builder
-    public Board(String title, String content, User user, Category category) {
-        this.title = title;
+    public Board(String content, User user) {
         this.content = content;
         this.user = user;
-        this.category = category;
     }
 
-    public void updatePost(String title, String content) {
-        this.title = title;
+    public void updatePost( String content) {
         this.content = content;
     }
 }

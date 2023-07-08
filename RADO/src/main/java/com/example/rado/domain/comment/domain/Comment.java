@@ -1,8 +1,8 @@
 package com.example.rado.domain.comment.domain;
 
-import com.example.backend.domain.board.domain.Board;
-import com.example.backend.domain.user.domain.User;
-import com.example.backend.global.entity.BaseEntity;
+import com.example.rado.domain.board.domain.Board;
+import com.example.rado.domain.user.domain.User;
+import com.example.rado.global.entity.BaseEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

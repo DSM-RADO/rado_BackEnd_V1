@@ -10,8 +10,6 @@ import java.time.LocalDate;
 public class QueryBoardListResponse {
     private Long boardId;
     private String writer;
-    private String title;
     private String content;
-
     private LocalDate date;
 }

@@ -1,17 +1,15 @@
 package com.example.rado.domain.board.presentation;
 
-import com.example.backend.domain.board.enums.Category;
-import com.example.backend.domain.board.presentation.dto.request.CreateBoardRequest;
-import com.example.backend.domain.board.presentation.dto.request.UpdateBoardRequest;
-import com.example.backend.domain.board.presentation.dto.response.QueryBoardDetailsResponse;
-import com.example.backend.domain.board.presentation.dto.response.QueryBoardListResponse;
-import com.example.backend.domain.board.service.*;
+import com.example.rado.domain.board.presentation.dto.request.CreateBoardRequest;
+import com.example.rado.domain.board.presentation.dto.request.UpdateBoardRequest;
+import com.example.rado.domain.board.presentation.dto.response.QueryBoardDetailsResponse;
+import com.example.rado.domain.board.presentation.dto.response.QueryBoardListResponse;
+import com.example.rado.domain.board.service.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -21,10 +19,10 @@ import java.util.List;
 @RequestMapping("/board")
 @RestController
 public class BoardController {
+    
     private final CreateBoardService createPostService;
     private final QueryBoardListService queryPostListService;
-    private final QueryBoardCategoryListService queryPostCategoryListService;
-    private final QueryBoardDetailService queryPostDetailService;
+    private final QueryBoardDetailService queryBoardDetailService;
     private final ModifyBoardService modifyPostService;
     private final DeleteBoardService deletePostService;
 
@@ -32,10 +30,9 @@ public class BoardController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create")
     public void createPost(
-            @RequestPart(value = "images", required = false) List<MultipartFile> images,
             @RequestPart(value = "request") @Valid CreateBoardRequest request
     ) {
-        createPostService.execute(images, request);
+        createPostService.execute(request);
     }
 
     @Operation(summary = "글 리스트")
@@ -44,27 +41,21 @@ public class BoardController {
         return queryPostListService.execute();
     }
 
-    @Operation(summary = "글 카테고리 리스트")
-    @GetMapping("/list/category")
-    public List<QueryBoardListResponse> postCategoryList(@RequestParam("value") Category category) {
-        return queryPostCategoryListService.execute(category);
-    }
 
     @Operation(summary = "글 자세히 보기")
     @GetMapping("/detail/{board_id}")
     public QueryBoardDetailsResponse postDetail(@PathVariable(name = "board_id") Long id) {
-        return queryPostDetailService.execute(id);
+        return queryBoardDetailService.execute(id);
     }
 
     @Operation(summary = "글 수정")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PatchMapping("/modify/{board_id}")
     public void modifyPost(
-            @RequestPart(value = "images", required = false) List<MultipartFile> images,
             @RequestPart(value = "request") @Valid UpdateBoardRequest request,
             @PathVariable(name = "board_id") Long id
     ) {
-        modifyPostService.execute(images, request, id);
+        modifyPostService.execute( request, id);
     }
 
     @Operation(summary = "글 삭제")

@@ -1,12 +1,12 @@
 package com.example.rado.domain.comment.presentation;
 
-import com.example.backend.domain.comment.presentation.dto.request.CommentAddRequest;
-import com.example.backend.domain.comment.presentation.dto.request.CommentRequest;
-import com.example.backend.domain.comment.presentation.dto.response.CommentListResponse;
-import com.example.backend.domain.comment.service.CreateCommentService;
-import com.example.backend.domain.comment.service.DeleteCommentService;
-import com.example.backend.domain.comment.service.ListCommentService;
-import com.example.backend.domain.comment.service.ModifyCommentService;
+import com.example.rado.domain.comment.presentation.dto.request.CommentAddRequest;
+import com.example.rado.domain.comment.presentation.dto.request.CommentRequest;
+import com.example.rado.domain.comment.presentation.dto.response.CommentListResponse;
+import com.example.rado.domain.comment.service.CreateCommentService;
+import com.example.rado.domain.comment.service.DeleteCommentService;
+import com.example.rado.domain.comment.service.ListCommentService;
+import com.example.rado.domain.comment.service.ModifyCommentService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

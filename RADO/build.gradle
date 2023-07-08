@@ -43,6 +43,31 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.11'
+
+    // developmentOnly
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+
+    // jwt
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+
+    // jpa
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // web
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // database
+    implementation 'mysql:mysql-connector-java:8.0.28'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
 }
 
 tasks.named('test') {

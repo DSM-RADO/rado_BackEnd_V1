@@ -1,9 +1,9 @@
 package com.example.rado.domain.comment.facade;
 
-import com.example.backend.domain.comment.domain.Comment;
-import com.example.backend.domain.comment.domain.repository.CommentRepository;
-import com.example.backend.global.error.ErrorCode;
-import com.example.backend.global.error.exeception.CustomException;
+import com.example.rado.domain.comment.domain.Comment;
+import com.example.rado.domain.comment.domain.repository.CommentRepository;
+import com.example.rado.global.error.ErrorCode;
+import com.example.rado.global.error.exeception.CustomException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;

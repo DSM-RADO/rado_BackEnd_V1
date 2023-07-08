@@ -1,11 +1,11 @@
 package com.example.rado.domain.comment.service;
 
-import com.example.backend.domain.board.facade.BoardFacade;
-import com.example.backend.domain.comment.domain.Comment;
-import com.example.backend.domain.comment.facade.CommentFacade;
-import com.example.backend.domain.comment.presentation.dto.response.CommentListResponse;
-import com.example.backend.domain.user.domain.User;
-import com.example.backend.domain.user.facade.UserFacade;
+import com.example.rado.domain.board.facade.BoardFacade;
+import com.example.rado.domain.comment.domain.Comment;
+import com.example.rado.domain.comment.facade.CommentFacade;
+import com.example.rado.domain.comment.presentation.dto.response.CommentListResponse;
+import com.example.rado.domain.user.domain.User;
+import com.example.rado.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;

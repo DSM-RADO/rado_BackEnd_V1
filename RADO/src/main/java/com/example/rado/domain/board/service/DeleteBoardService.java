@@ -1,12 +1,12 @@
 package com.example.rado.domain.board.service;
 
-import com.example.backend.domain.board.domain.Board;
-import com.example.backend.domain.board.domain.repository.BoardRepository;
-import com.example.backend.domain.board.facade.BoardFacade;
-import com.example.backend.domain.user.domain.User;
-import com.example.backend.domain.user.facade.UserFacade;
-import com.example.backend.global.error.ErrorCode;
-import com.example.backend.global.error.exeception.CustomException;
+import com.example.rado.domain.board.domain.Board;
+import com.example.rado.domain.board.domain.repository.BoardRepository;
+import com.example.rado.domain.board.facade.BoardFacade;
+import com.example.rado.domain.user.domain.User;
+import com.example.rado.domain.user.facade.UserFacade;
+import com.example.rado.global.error.ErrorCode;
+import com.example.rado.global.error.exeception.CustomException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +24,7 @@ public class DeleteBoardService {
         User user = userFacade.getCurrentUser();
         Board board = boardFacade.getBoardById(id);
 
-        if(!user.getEmail().equals(board.getUser().getEmail())){
+        if(!user.getAccountId().equals(board.getUser().getAccountId())){
             throw new CustomException(ErrorCode.BOARD_NOT_FOUND);
         }
 

@@ -27,7 +27,6 @@ public class JwtProvider {
     private static final String HEADER = "Authorization";
     private static final String PREFIX = "Bearer";
     private final AuthDetailsService authDetailsService;
-    private final RefreshTokenRepository refreshTokenRepository;
     @Value("${spring.jwt.key}")
     private String key;
 
@@ -43,7 +42,7 @@ public class JwtProvider {
     }
 
     public TokenResponse getToken(User user) {
-        String atk = generateAccessToken(user.getEmail());
+        String atk = generateAccessToken(user.getAccountId());
 
         return new TokenResponse(atk,atkTime);
     }

@@ -11,8 +11,6 @@ import java.util.List;
 public class QueryBoardDetailsResponse {
     private Long boardId;
     private String writer;
-    private String title;
     private String content;
     private LocalDate date;
-    private List<String> imageUrl;
 }

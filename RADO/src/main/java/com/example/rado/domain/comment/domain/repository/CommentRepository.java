@@ -1,6 +1,6 @@
 package com.example.rado.domain.comment.domain.repository;
 
-import com.example.backend.domain.comment.domain.Comment;
+import com.example.rado.domain.comment.domain.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
