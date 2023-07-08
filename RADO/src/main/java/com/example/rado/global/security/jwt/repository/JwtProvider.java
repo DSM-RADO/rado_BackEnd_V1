@@ -1,8 +1,8 @@
-package com.example.onepiece.User.global.security.jwt.repository;
+package com.example.rado.global.security.jwt.repository;
 
-import com.example.onepiece.User.global.security.auth.AuthDetailsService;
-import com.example.onepiece.User.global.security.error.ErrorCode;
-import com.example.onepiece.User.global.security.error.exception.CustomException;
+import com.example.rado.global.security.auth.AuthDetailsService;
+import com.example.rado.global.security.error.ErrorCode;
+import com.example.rado.global.security.error.exception.CustomException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Base64;
 import java.util.Date;
 
 @RequiredArgsConstructor
