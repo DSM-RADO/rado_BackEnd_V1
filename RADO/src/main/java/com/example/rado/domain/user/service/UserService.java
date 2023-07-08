@@ -45,7 +45,7 @@ public class UserService {
 
         String accessToken = jwtProvider.generateAccessToken(user.getUserId());
 
-        if (passwordEncoder.matches(userLoginRequest.getUserPassword(), user.getUserPassword()) && userLoginRequest.getUserId() == user.getUserId()){
+        if (passwordEncoder.matches(userLoginRequest.getUserPassword(), user.getUserPassword())){
             return TokenResponse.builder()
                     .accessToken(accessToken)
                     .build();
