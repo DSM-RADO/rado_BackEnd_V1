@@ -1,6 +1,6 @@
-package com.example.onepiece.User.global.security.error.entity;
+package com.example.rado.global.security.error.entity;
 
-import com.example.onepiece.User.global.security.error.ErrorCode;
+import com.example.rado.global.security.error.ErrorCode;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.http.ResponseEntity;
