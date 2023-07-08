@@ -1,7 +1,7 @@
-package com.example.onepiece.User.global.security.auth;
+package com.example.rado.global.security.auth;
 
-import com.example.onepiece.User.domain.entity.User;
-import com.example.onepiece.User.domain.repository.UserRepository;
+import com.example.rado.domain.user.entity.User;
+import com.example.rado.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
