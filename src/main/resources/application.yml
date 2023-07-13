@@ -5,26 +5,14 @@ spring:
     username: root
     password: rlaehrud9919@
 
-    jwt:
-      key: asdkhfqwioehraskjldbfklasbdfiuasdufweyhrjkahskldfhasduhfkljasdbhnfkjbaslkdfbuabsdufhiouhyweuiorhkljasdhflkusadhfkjbasdlkfbuashfkasbdlkfjh
-      live:
-        atk: 3600000
-        rtk: 604800000
-
     jpa:
       hibernate:
         ddl-auto: update
       show-sql: true
 
-  cloud:
-    aws:
-      credentials:
-        accessKey: AKIAWUTT3RNCWRQ5ZASA
-        secretKey: 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
-      s3:
-        bucket: td-project-bucket
-        dir: image
-      region:
-        static: ap-northeast-2
-      stack:
-        auto: false
+
+    jwt:
+      key: asdkhfqwioehraskjldbfklasbdfiuasdufweyhrjkahskldfhasduhfkljasdbhnfkjbaslkdfbuabsdufhiouhyweuiorhkljasdhflkusadhfkjbasdlkfbuashfkasbdlkfjh
+      live:
+        accessToken: 3600000
+

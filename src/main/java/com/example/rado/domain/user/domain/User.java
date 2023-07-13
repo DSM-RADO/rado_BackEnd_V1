@@ -19,6 +19,12 @@ public class User extends BaseEntity {
 
     private String nickname;
 
+    public void modify(String userId, String password, String nickname){
+        this.userId = userId;
+        this.password = password;
+        this.nickname = nickname;
+    }
+
     @Builder
     public User(String userId, String password, String nickname){
         this.userId = userId;
